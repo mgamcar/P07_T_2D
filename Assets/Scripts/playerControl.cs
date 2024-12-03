@@ -24,6 +24,10 @@ public class playerControl : MonoBehaviour
 
     bool endGame = false;
 
+
+    AudioSource audioSrc;
+    [SerializeField] AudioClip sdnJump, sndItem, sndShoot, sndDamage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +38,9 @@ public class playerControl : MonoBehaviour
         TxtItems.text = "Items: " + items;
 
         TxtTime.text = time.ToString();
+
+        audioSrc = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -80,6 +87,7 @@ public class playerControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && grounded())
             {
                 rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+                audioSrc.PlayOneShot(sdnJump);
             }
 
             //Disparo
@@ -87,6 +95,7 @@ public class playerControl : MonoBehaviour
             {
                 Instantiate(shot, new Vector3(transform.position.x, transform.position.y + 1.7f, 0), Quaternion.identity);
                 anim.SetBool("isShooting", true);
+                audioSrc.PlayOneShot(sndShoot);
             }
             time = time - Time.deltaTime;
             if (time < 0)
@@ -103,10 +112,11 @@ public class playerControl : MonoBehaviour
 
             TxtTime.text = min.ToString("00") + ":" + sec.ToString("00");
         }
-        else {
+        else
+        {
             rb.linearVelocity = Vector2.zero;
             sprite.gameObject.SetActive(false);
-            }
+        }
     }
 
     bool grounded()
@@ -138,6 +148,7 @@ public class playerControl : MonoBehaviour
         {
             Destroy(other.gameObject);
             items++;
+            audioSrc.PlayOneShot(sndItem);
             TxtItems.text = "Items: " + items;
             if (items == 4)
             {
@@ -157,10 +168,11 @@ public class playerControl : MonoBehaviour
 
     public void damage()
     {
-        if (!endGame){
+        if (!endGame)
+        {
             lives--;
         }
-
+        audioSrc.PlayOneShot(sndDamage);
         sprite.color = Color.red;
         GameManager.invulnerable = true;
         Invoke("becomeVulnerable", 1);

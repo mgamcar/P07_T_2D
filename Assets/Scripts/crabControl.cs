@@ -1,6 +1,6 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class crabControl : MonoBehaviour
 {
@@ -60,7 +60,8 @@ public class crabControl : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D other){
+    void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.gameObject.tag == "Player" && !GameManager.invulnerable)
         {
             other.gameObject.GetComponent<playerControl>().damage();
