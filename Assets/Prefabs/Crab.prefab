@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 1592512861743495921}
   m_Layer: 0
   m_Name: Crab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

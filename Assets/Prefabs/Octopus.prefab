@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 8036384942436378557}
   m_Layer: 0
   m_Name: Octopus
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,8 +157,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0051908493, y: -0.046719313}
-  m_Size: {x: 0.9464302, y: 1.5502505}
+  m_Offset: {x: 0.0051908493, y: -0.041296005}
+  m_Size: {x: 0.9464302, y: 1.7021043}
   m_Direction: 0
 --- !u!114 &7364312162578743642
 MonoBehaviour:
